@@ -8,7 +8,6 @@ import SpeedDialAddButton from '../components/SpeedDialAddButton'
 
 export const Licencias = () => {
   let {Id} = useParams()
-console.log(Id)  
 return (
     <><Esqueleto>
     <Container>

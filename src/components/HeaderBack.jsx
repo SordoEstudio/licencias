@@ -33,7 +33,7 @@ InputProps={{
 sx={{width:80}}/>
             </Box>
 <Box>
-<Button size="large" ENDIcon={<EditIcon/>}>editar perfil</Button>
+<Button size="large" endIcon={<EditIcon/>}>editar perfil</Button>
 </Box>
       </Toolbar>
             </Paper>        

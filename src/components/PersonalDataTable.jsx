@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom';
 
 import personalData from "../assets/personal.json"
 
-export default function PersonalDataTable() {
+export default function PersonalDataTable({data}) {
   const [searchItemId, setSearchItemId] = useState('')
   const [searchItemName, setSearchItemName] = useState('')
   const [searchItemDni, setSearchItemDni] = useState('')
-  const [filteredData, setFilteredData] = useState(personalData)
 
 
   const handleChangeId = (e) => { 
@@ -40,11 +39,6 @@ export default function PersonalDataTable() {
   }
 
   return (<>
-  <Container>
-<TextField onChange={(e)=>handleChangeId(e)} value={searchItemId}/>
-<TextField onChange={(e)=>handleChangeName(e)} value={searchItemName}/>
-<TextField onChange={(e)=>handleChangeDni(e)} value={searchItemDni}/>
-  </Container>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead sx={{bgcolor:"whitesmoke"}}>
@@ -58,7 +52,7 @@ export default function PersonalDataTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {filteredData.map((person) => (
+          {data.map((person) => (
             <TableRow
               key={person.id}
             >
