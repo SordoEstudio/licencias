@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import rows from "../assets/licencias.json"
+import NewLicence from './NewLicence';
 
 const columns = [
   { field: 'fecha', headerName: 'Fecha', width: 130 },
@@ -13,11 +14,12 @@ const columns = [
 ];
 
 export default function LicenciaDataTable() {
-
+const[newItem,setNewItem]=React.useState(false)
   
   return (
     <>
     <div style={{ height: 600, width: '100%' }}>
+      <NewLicence/>
       <DataGrid
         rows={rows}
         columns={columns}
