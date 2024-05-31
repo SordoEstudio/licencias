@@ -8,12 +8,12 @@ import personalData from "../assets/personal.json"
 
 
 export const Home = () => {
-  const [searchItemId, setSearchItemId] = useState('')
+  const [searchItem, setSearchItem] = useState('')
   const [searchItemName, setSearchItemName] = useState('')
   const [searchItemDni, setSearchItemDni] = useState('')
   const [filteredData, setFilteredData] = useState(personalData)
 
-
+/*
   const handleChangeId = (e) => { 
     const searchTerm = e.target.value;
     setSearchItemId(searchTerm)
@@ -40,10 +40,21 @@ export const Home = () => {
     );
     setFilteredData(filteredItems);
   }
+  handleDni={handleChangeDni}handleId={handleChangeId}handleName={handleChangeName}
+  */
+  const handleData = (e) => { 
+    const searchTerm = e.target.value;
+    setSearchItem(searchTerm)
+    const filteredItems = personalData.filter((person) =>
+      person.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      person.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        person.id.includes(searchTerm)    );
+    setFilteredData(filteredItems);
+}
   return (
     <><Esqueleto>
     <Container>
-    <SearchHeader handleDni={handleChangeDni}handleId={handleChangeId}handleName={handleChangeName}/>
+    <SearchHeader handleData={handleData}/>
     <PersonalDataTable data={filteredData} />
     </Container>
     </Esqueleto></>

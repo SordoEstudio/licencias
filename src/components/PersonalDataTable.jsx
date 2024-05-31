@@ -6,37 +6,6 @@ import { Link } from 'react-router-dom';
 import personalData from "../assets/personal.json"
 
 export default function PersonalDataTable({data}) {
-  const [searchItemId, setSearchItemId] = useState('')
-  const [searchItemName, setSearchItemName] = useState('')
-  const [searchItemDni, setSearchItemDni] = useState('')
-
-
-  const handleChangeId = (e) => { 
-    const searchTerm = e.target.value;
-    setSearchItemId(searchTerm)
-    const filteredItems = personalData.filter((person) =>
-    person.id.includes(searchTerm)
-    );
-    setFilteredData(filteredItems);
-  }
-
-  const handleChangeName = (e) => { 
-    const searchTerm = e.target.value;
-    setSearchItemName(searchTerm)
-    const filteredItems = personalData.filter((person) =>
-    person.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredData(filteredItems);
-  }
-
-  const handleChangeDni = (e) => { 
-    const searchTerm = e.target.value;
-    setSearchItemDni(searchTerm)
-    const filteredItems = personalData.filter((person) =>
-    person.dni.includes(searchTerm)
-    );
-    setFilteredData(filteredItems);
-  }
 
   return (<>
     <TableContainer component={Paper}>
