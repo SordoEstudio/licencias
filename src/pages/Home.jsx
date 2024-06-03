@@ -1,47 +1,27 @@
 import React, { useState } from 'react'
-import Esqueleto from '../layouts/Esqueleto'
 import { Container } from '@mui/material'
+
+import AddFloatButton from '../components/AddFloatbutton'
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import ShareIcon from "@mui/icons-material/Share";
+
+import Esqueleto from '../layouts/Esqueleto'
 import SearchHeader from '../components/SearchHeader'
 import PersonalDataTable from '../components/PersonalDataTable'
 
 import personalData from "../assets/personal.json"
 
+const actions = [
+  { icon: <AddIcon />, name: 'Nuevo'},
+    { icon: <EditIcon />, name: 'Editar Perfil'},
+    { icon: <ShareIcon />, name: 'Compartir'},
+  ];
 
 export const Home = () => {
   const [searchItem, setSearchItem] = useState('')
-  const [searchItemName, setSearchItemName] = useState('')
-  const [searchItemDni, setSearchItemDni] = useState('')
   const [filteredData, setFilteredData] = useState(personalData)
 
-/*
-  const handleChangeId = (e) => { 
-    const searchTerm = e.target.value;
-    setSearchItemId(searchTerm)
-    const filteredItems = personalData.filter((person) =>
-    person.id.includes(searchTerm)
-    );
-    setFilteredData(filteredItems);
-  }
-
-  const handleChangeName = (e) => { 
-    const searchTerm = e.target.value;
-    setSearchItemName(searchTerm)
-    const filteredItems = personalData.filter((person) =>
-    person.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredData(filteredItems);
-  }
-
-  const handleChangeDni = (e) => { 
-    const searchTerm = e.target.value;
-    setSearchItemDni(searchTerm)
-    const filteredItems = personalData.filter((person) =>
-    person.dni.includes(searchTerm)
-    );
-    setFilteredData(filteredItems);
-  }
-  handleDni={handleChangeDni}handleId={handleChangeId}handleName={handleChangeName}
-  */
   const handleData = (e) => { 
     const searchTerm = e.target.value;
     setSearchItem(searchTerm)
@@ -51,11 +31,22 @@ export const Home = () => {
         person.id.includes(searchTerm)    );
     setFilteredData(filteredItems);
 }
+const handleAction=(a)=>{
+  switch (a) {
+    case "Nuevo":
+  console.log("nuevo")
+      break;
+  
+    default:
+      break;
+  }
+    }
   return (
     <><Esqueleto>
     <Container>
     <SearchHeader handleData={handleData}/>
     <PersonalDataTable data={filteredData} />
+    <AddFloatButton actions={actions} handleAction={handleAction}/>
     </Container>
     </Esqueleto></>
   )
