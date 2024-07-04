@@ -1,0 +1,12 @@
+<App>
+|<Home> ("/")
+||<Esqueleto>
+||<SearchHeader>
+||<PersonalDataTable>
+||<AddFloatButton>
+|<Licencias> ("/:id")
+||<Esqueleto>
+||<HeaderBack>
+||<LicenciaDataTable>
+|||<NewLcence>
+||<AddFloatButton>

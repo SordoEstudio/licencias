@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -11,30 +11,50 @@ import {
   TableRow,
   TextField,
 } from "@mui/material/";
-import SaveIcon from "@mui/icons-material/Save";
-import CancelIcon from "@mui/icons-material/Cancel";
+import DoneIcon from '@mui/icons-material/Done';
+import ClearIcon from '@mui/icons-material/Clear';
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-import "dayjs/locale/es-mx";
+import "dayjs/locale/es-mx" ;
 
+const currentYear = dayjs().year();
+const currentDay = dayjs()
+
+const initialForm ={
+  today:currentDay,
+  desde:currentDay,
+  hasta:currentDay,
+  dias:0,
+  año:currentYear,
+  autorizo:"current User"
+}
 export default function NewLicence() {
-  const [today, setToday] = useState(dayjs());
-  const [desde, setDesde] = useState(dayjs());
-  const [hasta, setHasta] = useState(dayjs());
-  const [dias, setDias] = useState();
-  const [año, setAño] = useState(2024);
-  const [autorizo, setAutorizo] = useState("Curent User");
+  const [form,setForm]=useState(initialForm)
 
+const handleChange=(e)=>{
+setForm({...form,
+  [e.target.name]:e.target.value}
+)
+}
+const handleSave=()=>{
+  console.log("send:", form)
+  setForm(initialForm)
+}
+const handleCancel=()=>{
+  console.log("cancel")
+  setForm(initialForm)
+}
   // Esta propiedad debe recibirse de un context
+  // el Current User, tambien. ver sese manejo
   const isAdmin = true;
 
-  const ActionsButtons = () => {
+  const ActionsButtons = ({toSave,toCancel}) => {
     return (
       <Box>
-        <IconButton>
-          <SaveIcon />
+        <IconButton onClick={toSave} color="success">
+          <DoneIcon />
         </IconButton>
         <IconButton>
-          <CancelIcon />
+          <ClearIcon onCick={toCancel} color="error"/>
         </IconButton>
       </Box>
     );
@@ -45,55 +65,52 @@ export default function NewLicence() {
         <TableCell align="center">
           <DatePicker
           sx={{maxWidth:160}}
-            /* label="Fecha de creacion" */
-            value={today}
-            onChange={(newValue) => setToday(newValue)}
-            disabled={!isAdmin}
+          name="today"
+          value={form.today}
+          onChange={handleChange}
+          disabled={!isAdmin}
           />
         </TableCell>
-        <TableCell align="right">
+        <TableCell align="right" >
           <TextField
             variant="standard"
             sx={{ width: 50 }}
-            value={dias}
-            onChange={(e) => setDias(e.target.value)}
-          />
+            name="dias"
+            value={form.dias}
+            onChange={handleChange}
+            />
         </TableCell>
         <TableCell align="center">
           <DatePicker
-                    sx={{maxWidth:160}}
-
-            /* label="Desde" */
-            value={desde}
-            onChange={(newValue) => setDesde(newValue)}
-          />
+            sx={{maxWidth:160}}
+            name="desde"
+            value={form.desde}
+            onChange={handleChange}
+            />
         </TableCell>
         <TableCell align="center">
           <DatePicker
-                    sx={{maxWidth:160}}
-
-            /* label="Hasta" */
-            value={hasta}
-            onChange={(newValue) => setHasta(newValue)}
-          />
+            sx={{maxWidth:160}}
+            name="hasta"
+            value={form.hasta}
+            onChange={handleChange}
+            />
         </TableCell>
-
         <TableCell align="center">
           <TextField
             variant="standard"
             sx={{ width: 50 }}
-            value={año}
-            onChange={(e) => setAño(e.target.value)}
-          />
+            name="año"
+            value={form.año}
+            onChange={handleChange}
+            />
         </TableCell>
         <TableCell align="right">
-          {" "}
           <TextField
             variant="standard"
-            value={autorizo}
-            onChange={(e) => {
-              setAutorizo(e.target.value);
-            }}
+            value={form.autorizo}
+            name="autorizo"
+            onChange={handleChange}
             disabled={!isAdmin}
           />
         </TableCell>
@@ -105,7 +122,7 @@ export default function NewLicence() {
            */}
         </TableCell>
         <TableCell>
-          <ActionsButtons />
+          <ActionsButtons toSave={handleSave} toCancel={handleCancel}/>
         </TableCell>
       </TableRow>
     </LocalizationProvider>

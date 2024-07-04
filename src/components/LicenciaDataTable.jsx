@@ -11,11 +11,9 @@ import {
   TableRow,
 } from "@mui/material/";
 
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-
 import data from "../assets/licencias.json";
 import NewLicence from "./NewLicence";
+import ActionButtons from "./ActionButtons";
 
 const HeaderTable = [
   { align: "center", title: "Fecha" },
@@ -29,19 +27,9 @@ const HeaderTable = [
 ];
 
 export default function LicenciaDataTable({ newItem }) {
-  const ActionsButtons = () => {
-    return (
-      <Box>
-        <IconButton>
-          <EditIcon />
-        </IconButton>
-        <IconButton>
-          <DeleteIcon />
-        </IconButton>
-      </Box>
-    );
-  };
 
+const toDelete=()=>{}
+const toEdit=()=>{}
   return (
     <>
       <TableContainer component={Paper}>
@@ -68,7 +56,7 @@ export default function LicenciaDataTable({ newItem }) {
                 <TableCell align="right">{item.corresponde_año}</TableCell>
                 <TableCell align="right">{item.autorizo}</TableCell>
                 <TableCell align="right">{item.adjunto}</TableCell>
-                <TableCell align="right">{<ActionsButtons />}</TableCell>
+                <TableCell align="right">{<ActionButtons yesAction={toEdit} noAction={toDelete} />}</TableCell>
               </TableRow>
             ))}
           </TableBody>
