@@ -1,7 +1,5 @@
 import * as React from "react";
 import {
-  Box,
-  IconButton,
   Paper,
   Table,
   TableBody,
@@ -11,9 +9,8 @@ import {
   TableRow,
 } from "@mui/material/";
 
-import data from "../assets/licencias.json";
-import NewLicence from "./NewLicence";
-import ActionButtons from "./ActionButtons";
+import data from "../../assets/licencias.json";
+import ActionButtons from "../ActionButtons";
 
 const HeaderTable = [
   { align: "center", title: "Fecha" },
@@ -26,10 +23,13 @@ const HeaderTable = [
   { align: "center", title: "Accion" },
 ];
 
-export default function LicenciaDataTable({ newItem }) {
+export default function LicenciaDataTable({ newItem,setNewItem }) {
 
-const toDelete=()=>{}
-const toEdit=()=>{}
+const toDelete=(id)=>{
+
+}
+const toEdit=()=>{
+}
   return (
     <>
       <TableContainer component={Paper}>
@@ -44,9 +44,6 @@ const toEdit=()=>{}
             </TableRow>
           </TableHead>
           <TableBody>
-            {newItem && (
-                <NewLicence />
-            )}
             {data.map((item) => (
               <TableRow key={item.id}>
                 <TableCell align="center">{item.fecha}</TableCell>
@@ -56,7 +53,7 @@ const toEdit=()=>{}
                 <TableCell align="right">{item.corresponde_año}</TableCell>
                 <TableCell align="right">{item.autorizo}</TableCell>
                 <TableCell align="right">{item.adjunto}</TableCell>
-                <TableCell align="right">{<ActionButtons yesAction={toEdit} noAction={toDelete} />}</TableCell>
+                <TableCell align="right">{<ActionButtons yesAction={toEdit(item)} noAction={toDelete(item.id)} />}</TableCell>
               </TableRow>
             ))}
           </TableBody>

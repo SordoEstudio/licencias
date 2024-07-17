@@ -7,6 +7,20 @@
 |<Licencias> ("/:id")
 ||<Esqueleto>
 ||<HeaderBack>
+||<DialogComponent>
+|||<NewLicenceForm> //conectar con floating button
 ||<LicenciaDataTable>
-|||<NewLcence>
+|||<NewLIcence>
 ||<AddFloatButton>
+
+ver Test
+-DialogComponent
+-- User Form
+//implementar el guardado de los datos del nevo usuario
+-- New Licence Form
+// dar formato a Form
+//implementar el guardado de los datos del nevo usuario
+
+!El edit de licencia, usa elmismo form
+!El edit de personal, usa el mismo form
+

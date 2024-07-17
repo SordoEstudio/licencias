@@ -8,9 +8,11 @@ import ShareIcon from "@mui/icons-material/Share";
 
 import Esqueleto from '../layouts/Esqueleto'
 import SearchHeader from '../components/SearchHeader'
-import PersonalDataTable from '../components/PersonalDataTable'
+import DialogComponent from '../components/DialogComponent';
+import UserForm from '../components/Personal/UserForm';
 
 import personalData from "../assets/personal.json"
+import PersonalDataTable from '../components/Personal/PersonalDataTable';
 
 const actions = [
   { icon: <AddIcon />, name: 'Nuevo'},
@@ -18,10 +20,13 @@ const actions = [
     { icon: <ShareIcon />, name: 'Compartir'},
   ];
 
-export const Home = () => {
+export const Personal = () => {
   const [searchItem, setSearchItem] = useState('')
   const [filteredData, setFilteredData] = useState(personalData)
-
+  const [open, setOpen] = React.useState(false);
+function handleOpenDialog(){
+  setOpen(true)
+}
   const handleData = (e) => { 
     const searchTerm = e.target.value;
     setSearchItem(searchTerm)
@@ -36,7 +41,6 @@ const handleAction=(a)=>{
     case "Nuevo":
   console.log("nuevo")
       break;
-  
     default:
       break;
   }
@@ -44,9 +48,12 @@ const handleAction=(a)=>{
   return (
     <><Esqueleto>
     <Container>
-    <SearchHeader handleData={handleData}/>
+    <SearchHeader handleData={handleData} handleNew={handleOpenDialog}/>
     <PersonalDataTable data={filteredData} />
     <AddFloatButton actions={actions} handleAction={handleAction}/>
+        <DialogComponent setOpen={setOpen} open={open} title="Crear nuevo usuario">
+        <UserForm setOpen={setOpen}/>
+    </DialogComponent>
     </Container>
     </Esqueleto></>
   )

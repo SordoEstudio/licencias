@@ -4,7 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
-const SearchHeader = ({handleData}) => {
+const SearchHeader = ({handleData,handleNew}) => {
 
   return (
     <Container sx={{pt:2,pb:2}} >  
@@ -15,7 +15,7 @@ const SearchHeader = ({handleData}) => {
 <TextField label="Legajo / Apellido / Nombre" size="small"onChange={(e)=>handleData(e)}></TextField>
             </Box>
       <Box>
-        <IconButton size="large"><PersonAddIcon/></IconButton>
+        <IconButton size="large" onClick={handleNew}><PersonAddIcon/></IconButton>
       </Box>
       </Toolbar>
             </Paper>        

@@ -19,16 +19,8 @@ import "dayjs/locale/es-mx" ;
 const currentYear = dayjs().year();
 const currentDay = dayjs()
 
-const initialForm ={
-  today:currentDay,
-  desde:currentDay,
-  hasta:currentDay,
-  dias:0,
-  año:currentYear,
-  autorizo:"current User"
-}
-export default function NewLicence() {
-  const [form,setForm]=useState(initialForm)
+export default function NewLicence(initialState) {
+  const [form,setForm]=useState(initialState)
 
 const handleChange=(e)=>{
 setForm({...form,
@@ -37,7 +29,7 @@ setForm({...form,
 }
 const handleSave=()=>{
   console.log("send:", form)
-  setForm(initialForm)
+  setForm(initialState)
 }
 const handleCancel=()=>{
   console.log("cancel")
