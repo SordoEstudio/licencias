@@ -9,7 +9,6 @@ import {
   TableRow,
 } from "@mui/material/";
 
-import data from "../../assets/licencias.json";
 import ActionButtons from "../ActionButtons";
 
 const HeaderTable = [
@@ -23,13 +22,12 @@ const HeaderTable = [
   { align: "center", title: "Accion" },
 ];
 
-export default function LicenciaDataTable({ newItem,setNewItem }) {
+export default function LicenciaDataTable({ toEdit, data }) {
 
 const toDelete=(id)=>{
 
 }
-const toEdit=()=>{
-}
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -53,7 +51,7 @@ const toEdit=()=>{
                 <TableCell align="right">{item.corresponde_año}</TableCell>
                 <TableCell align="right">{item.autorizo}</TableCell>
                 <TableCell align="right">{item.adjunto}</TableCell>
-                <TableCell align="right">{<ActionButtons yesAction={toEdit(item)} noAction={toDelete(item.id)} />}</TableCell>
+                <TableCell align="right">{<ActionButtons yesAction={()=>toEdit(item)} noAction={toDelete(item.id)} />}</TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -12,6 +12,7 @@ import {
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import "dayjs/locale/es-mx";
 import { SaveCancelComponent } from "../SaveCancelComponent";
+import DatePickerInput from "../DatePickerInput";
 
 // Asegúrate de que initialForm tiene todos los campos correctamente inicializados
 const hoy = dayjs('2022-04-17',"DD-MM-YYYY")
@@ -26,8 +27,8 @@ const initialForm = {
   adjunto: false,
 };
 
-export default function NewLicenceForm({ data, toSave, toCancel }) {
-  const [form, setForm] = useState(data?data: initialForm);
+export default function NewLicenceFormNDP({ data, toSave, toCancel }) {
+  const [form, setForm] = useState(initialForm);
 
   // Use effect to set initial form data if 'data' prop is passed
   useEffect(() => {
@@ -66,14 +67,8 @@ export default function NewLicenceForm({ data, toSave, toCancel }) {
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es-mx">
         <Typography type="h3">Nueva Licencia</Typography>
       <FormControl sx={{display:"grid",direction:"column",gap:1}}>
-        <DatePicker
-          sx={{ maxWidth: 160 }}
-          name="today"
-          value={form.pedido}
-          onChange={(newValue) => handleDateChange("today", newValue)}
-          disabled={!isAdmin}
-label="pedido"
-        />
+        
+      <DatePickerInputNDP date={form.desde} />
 
         <DatePicker
           sx={{ maxWidth: 160 }}

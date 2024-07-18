@@ -1,23 +1,22 @@
 import React, { useState } from 'react'
+
 import { Container } from '@mui/material'
 
-import AddFloatButton from '../components/AddFloatbutton'
 import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import ShareIcon from "@mui/icons-material/Share";
+import SaveIcon from "@mui/icons-material/Save";
 
+import AddFloatButton from '../components/AddFloatbutton'
 import Esqueleto from '../layouts/Esqueleto'
 import SearchHeader from '../components/SearchHeader'
 import DialogComponent from '../components/DialogComponent';
 import UserForm from '../components/Personal/UserForm';
+import PersonalDataTable from '../components/Personal/PersonalDataTable';
 
 import personalData from "../assets/personal.json"
-import PersonalDataTable from '../components/Personal/PersonalDataTable';
 
 const actions = [
   { icon: <AddIcon />, name: 'Nuevo'},
-    { icon: <EditIcon />, name: 'Editar Perfil'},
-    { icon: <ShareIcon />, name: 'Compartir'},
+  { icon: <SaveIcon />, name: "Guardar"}
   ];
 
 export const Personal = () => {

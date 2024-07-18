@@ -13,24 +13,31 @@ import DialogComponent from "../components/DialogComponent";
 import LicenciaDataTable from "../components/Licencias/LicenciaDataTable";
 import NewLicenceForm from "../components/Licencias/NewLicenceForm";
 
+import data from "../assets/licencias.json";
+
 const actions = [
   { icon: <AddIcon />, name: "Nuevo"},
   { icon: <SaveIcon />, name: "Guardar"},
   { icon: <PrintIcon />, name: "Imprimir"},
   { icon: <ShareIcon />, name: "Compartir"}
 ];
-const initialState={
 
-}
 export const Licencias = () => {
-const[currentData,setCurrentData] =useState(initialState) 
+const[currentData,setCurrentData] =useState(data) 
 let { Id } = useParams();
 
 const [open,setOpen]=useState(false)
-
+function formatDate(data){
+  return `${data.pedido.$D}/${data.pedido.$M}/${data.pedido.$y}`
+}
+// POST : 
 const handleSave=(data)=>{
-console.log(data)
+  setCurrentData
 setOpen(false)
+}
+const handleEdit=(item)=>{
+  setOpen(true)
+  console.log(item)
 }
   const handleAction=(a)=>{
 switch (a) {
@@ -48,7 +55,7 @@ case "Cancel":
       <Esqueleto>
         <>
           <HeaderBack userId={Id} />
-          <LicenciaDataTable />
+          <LicenciaDataTable toEdit={handleEdit} data={currentData} />
           <DialogComponent open={open}setOpen={setOpen}>
             <NewLicenceForm setOpen={setOpen} toSave={handleSave} toCancel={()=>handleAction("Cancel")}/>
           </DialogComponent >

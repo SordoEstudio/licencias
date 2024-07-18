@@ -11,11 +11,11 @@ const ActionButtons = ({yesAction,noAction}) => {
 
     return (
       <Box>
-        <IconButton>
-          <EditIcon onClick={yesAction}/>
+        <IconButton onClick={yesAction}>
+          <EditIcon />
         </IconButton>
-        <IconButton>
-          <DeleteIcon onClick={noAction}/>
+        <IconButton onClick={noAction}>
+          <DeleteIcon />
         </IconButton>
       </Box>
     );

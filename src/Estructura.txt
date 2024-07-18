@@ -2,25 +2,44 @@
 |<Home> ("/")
 ||<Esqueleto>
 ||<SearchHeader>
-||<PersonalDataTable>
+||<PersonalDataTable>  -> Get: Lista de Personal 
+||<DialogComponent>
+|||<NewUserForm>       -> Post : Nuevo Personal
 ||<AddFloatButton>
-|<Licencias> ("/:id")
+|<Licencias> ("/:id")  -> Get : Lista de Licencias
 ||<Esqueleto>
 ||<HeaderBack>
 ||<DialogComponent>
-|||<NewLicenceForm> //conectar con floating button
+|||<NewLicenceForm>    -> Post: Nueva Licencia
 ||<LicenciaDataTable>
-|||<NewLIcence>
 ||<AddFloatButton>
 
-ver Test
--DialogComponent
--- User Form
-//implementar el guardado de los datos del nevo usuario
--- New Licence Form
-// dar formato a Form
-//implementar el guardado de los datos del nevo usuario
+TAREAS
+- Ver si sirve elfuncionamiento del DatePickerInput NDP (test)
 
-!El edit de licencia, usa elmismo form
-!El edit de personal, usa el mismo form
+- El edit de licencia // Ver formato (titulo,padding top)*
+- El edit de licencia // Traer datos reales
+- Implementear Eliminar registrio
+- Traer Confirm de otro proyecto
+
+- Implementar Edit de Personal
+
+
+
+FUNCIONALIDADES 
+//Licencias
+- Guardar (Excel)
+- Imprimir
+- Compartir
+
+- Nueva licencia Imprimir compobante
+
+//Personal
+- Guardar (Excel)
+
+SECCIONES
+Login
+Perfil de usuario
+
+
 
