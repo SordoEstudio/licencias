@@ -16,7 +16,7 @@ import { SaveCancelComponent } from "../SaveCancelComponent";
 // Asegúrate de que initialForm tiene todos los campos correctamente inicializados
 const hoy = dayjs('2022-04-17',"DD-MM-YYYY")
 const initialForm = {
-  pedido:hoy,
+  fecha:hoy,
   dias: 0,
   desde: hoy,
   hasta: hoy,
@@ -27,7 +27,7 @@ const initialForm = {
 };
 
 export default function NewLicenceForm({ data, toSave, toCancel }) {
-  const [form, setForm] = useState(data?data: initialForm);
+  const [form, setForm] = useState(initialForm);
 
   // Use effect to set initial form data if 'data' prop is passed
   useEffect(() => {
@@ -53,6 +53,7 @@ export default function NewLicenceForm({ data, toSave, toCancel }) {
   const handleSave = () => {
     toSave(form);
     setForm(initialForm);
+    console.log("save form:",form)
   };
 
   const handleCancel = () => {

@@ -22,11 +22,9 @@ const HeaderTable = [
   { align: "center", title: "Accion" },
 ];
 
-export default function LicenciaDataTable({ toEdit, data }) {
+export default function LicenciaDataTable({ toEdit, data,toDelete }) {
 
-const toDelete=(id)=>{
 
-}
 
   return (
     <>
@@ -51,7 +49,7 @@ const toDelete=(id)=>{
                 <TableCell align="right">{item.corresponde_año}</TableCell>
                 <TableCell align="right">{item.autorizo}</TableCell>
                 <TableCell align="right">{item.adjunto}</TableCell>
-                <TableCell align="right">{<ActionButtons yesAction={()=>toEdit(item)} noAction={toDelete(item.id)} />}</TableCell>
+                <TableCell align="right">{<ActionButtons yesAction={()=>toEdit(item)} noAction={()=>toDelete(item.id)} />}</TableCell>
               </TableRow>
             ))}
           </TableBody>

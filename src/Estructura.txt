@@ -15,31 +15,23 @@
 ||<AddFloatButton>
 
 TAREAS
-- Ver si sirve elfuncionamiento del DatePickerInput NDP (test)
 
-- El edit de licencia // Ver formato (titulo,padding top)*
-- El edit de licencia // Traer datos reales
-- Implementear Eliminar registrio
-- Traer Confirm de otro proyecto
-
-- Implementar Edit de Personal
-
-
+- Implementar Confirm 
 
 FUNCIONALIDADES 
 //Licencias
 - Guardar (Excel)
 - Imprimir
 - Compartir
+- Subir Archivo (New Licence Form)
 
 - Nueva licencia Imprimir compobante
 
 //Personal
-- Guardar (Excel)
+- Guardar (Excel) 
+. Detalle de licencias solicitadas.
 
 SECCIONES
 Login
 Perfil de usuario
-
-
 

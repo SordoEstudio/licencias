@@ -6,7 +6,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import { useNavigate } from 'react-router-dom';
 
-const HeaderBack = ({userId}) => {
+const HeaderBack = ({userId,handleEdit}) => {
 
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ InputProps={{
 sx={{width:80}}/>
             </Box>
 <Box>
-<Button size="large" endIcon={<EditIcon/>}>editar perfil</Button>
+<Button onClick={()=>handleEdit(userId)} size="large" endIcon={<EditIcon/>}>editar perfil</Button>
 </Box>
       </Toolbar>
             </Paper>        
